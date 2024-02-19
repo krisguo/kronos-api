@@ -73,10 +73,11 @@ class TestSettings(BaseSettings):
     TEST_PASSWORD: str = config("TEST_PASSWORD", default="Str1ng$t")
 
 
-class RedisCacheSettings(BaseSettings):
+class RedisCacheSettings(BaseSettings): 
     REDIS_CACHE_HOST: str = config("REDIS_CACHE_HOST", default="localhost")
     REDIS_CACHE_PORT: int = config("REDIS_CACHE_PORT", default=6379)
-    REDIS_CACHE_URL: str = f"redis://{REDIS_CACHE_HOST}:{REDIS_CACHE_PORT}"
+    REDIS_CACHE_PASSWORD: str = config("REDIS_CACHE_PASSWORD", default="")
+    REDIS_CACHE_URL: str = f"redis://{REDIS_CACHE_PASSWORD}@{REDIS_CACHE_HOST}:{REDIS_CACHE_PORT}"
 
 
 class ClientSideCacheSettings(BaseSettings):
